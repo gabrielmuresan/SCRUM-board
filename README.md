@@ -14,15 +14,14 @@ Currently I am a student in Denmark taking web development courses where we have
 
 Scrum board result
 ------------------
-```
- |         Story		|         To Do			|      In Process		|       To Verify		|       Done		|
- | :------------------: | :-------------------: | :-------------------: | :-------------------: | :---------------: |
- |						|						|						|						|				    |
- |						|						|						|						|				    |
- |						|						|						|						|				    |
- |						|						|						|						|			        |
- |						|						|						|						|					|
-```
+
+|  Story               |  To Do                |  In Process           |  To Verify            |  Done             |
+| :------------------: | :-------------------: | :-------------------: | :-------------------: | :---------------: |
+|                      |                       |                       |                       |                   |
+|                      |                       |                       |                       |                   |
+|                      |                       |                       |                       |                   |
+|                      |                       |                       |                       |                   |
+|                      |                       |                       |                       |                   |
 
 Table Structure
 ---------------
