@@ -8,6 +8,22 @@ The Idea
   * One **project** can have one **board** (1..1)
   * One **board** can have multiple **notes** (1..*)
 
+The story behind the idea
+-------------------------
+Currently I am a student in Denmark taking web development courses where we have to create a simple web application. The main idea of a SCRUM board came from the list of things we could do for that application.
+
+Scrum board result
+------------------
+```
+ |         Story		|         To Do			|      In Process		|       To Verify		|       Done		|
+ | :------------------: | :-------------------: | :-------------------: | :-------------------: | :---------------: |
+ |						|						|						|						|				    |
+ |						|						|						|						|				    |
+ |						|						|						|						|				    |
+ |						|						|						|						|			        |
+ |						|						|						|						|					|
+```
+
 Table Structure
 ---------------
 
@@ -31,4 +47,10 @@ Table Structure
 | Id            | int           |
 | ProjectId     | int           |
 | ColumnNames   | string        |
-| Default       | bool          |
+
+| Note          | Type          |
+| :-----------: | :-----------: |
+| Id            | int           |
+| ProjectId     | int           |
+| ColumnNumber  | string        |
+
