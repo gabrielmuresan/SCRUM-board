@@ -4,7 +4,7 @@
   margin: 0 auto;
 }
 .column {
-  width: 150px
+  width: 150px;
   display: inline-block;
   border: 1px solid red;
   margin: 20px;
