@@ -7,5 +7,6 @@
   width: 150px;
   display: inline-block;
   border: 1px solid red;
-  margin: 18px;
+  margin: 17px;
+  height: auto;
 }
