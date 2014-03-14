@@ -4,9 +4,9 @@
   margin: 0 auto;
 }
 .column {
-  width: 150px;
+  width: 180px;
   display: inline-block;
   border: 1px solid red;
-  margin: 17px;
+  margin: 2px;
   height: auto;
 }
