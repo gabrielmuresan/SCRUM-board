@@ -5,8 +5,8 @@
   height:80%;
 }
 .column {
-  width: 100px;
+  width: 18%;
   display: inline-block;
   border: 1px solid red;
-  margin: 20px;
+  margin: 2%;
 }
