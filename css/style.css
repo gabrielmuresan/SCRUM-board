@@ -1,12 +1,45 @@
 #board {
-  position: relative;
-  width:950px;
-  margin: 0 auto;
+    position: relative;
+    width:100%;
+    margin: 0 auto;
 }
 .column {
-  width: 180px;
-  display: inline-block;
-  border: 1px solid red;
-  margin: 2px;
-  height: auto;
+    width: 18%;
+    display: inline-block;
+    border: 1px solid red;
+    margin: .5%;
+    height: auto;
+    min-height: 200px;
+    vertical-align: top;
+}
+.note {
+    background-color: #ddd;
+    border: 1px solid #999;
+    margin: 5px;
+    display: inline-block;
+    position: relative;
+}
+.note > .title, .note > .content {
+    display: block;
+    padding: 2px;
+}
+.note > .title {
+    border-bottom: 1px solid #fff;
+}
+.note > .moveLeft, .note > .moveRight {
+    position: absolute;
+    height: 100%;
+    background-color: #1fda9a;
+    padding: 0px 10px;
+    line-height: 100px;
+    z-index: 100;
+    opacity: 0;
+}
+.note > .moveLeft {
+    box-shadow: 5px 0px 10px #999;
+    left:0;
+}
+.note > .moveRight {
+    box-shadow: -5px 0px 10px #999;
+    right:0;
 }
