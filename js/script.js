@@ -2,9 +2,7 @@ _onReady(function() {
     var moveRight = function(el) {
         var nextCol = "";
         var classList = el.parentNode.className;
-        console.log(JSON.stringify(classList));
         var end = false;
-        console.log(el.className);
         if(classList.indexOf("column_todo")>=0)
             nextCol = ".column_inProgress";
         else if(classList.indexOf("column_inProgress")>=0)
@@ -14,7 +12,12 @@ _onReady(function() {
         else if(classList.indexOf("column_done")>=0)
             end = true;
         if(!end)
+        {
+            el.style.opacity = 0;
             document.querySelector(nextCol).appendChild(el);
+            if(el.id)location.href="#" + el.id;
+            fadeIn(el);
+        }
     }
     var moveLeft = function(el) {
         var nextCol = "";
@@ -29,24 +32,25 @@ _onReady(function() {
         else if(classList.indexOf("column_done")>=0)
             nextCol = ".column_toVerify";
         if(!end)
+        {
+            el.style.opacity = 0;
             document.querySelector(nextCol).appendChild(el);
+            if(el.id)location.href="#" + el.id;
+            fadeIn(el);
+        }
     }
     var moveRightNodes = document.querySelectorAll(".moveRight");
     for (var i = 0; i < moveRightNodes.length; ++i) {
         moveRightNodes[i].addEventListener("click", function(event)
-        {
-            moveRight(this.parentNode);
-        }, false);
+                                           {
+                                               moveRight(this.parentNode);
+                                           }, false);
     }
     var moveLeftNodes = document.querySelectorAll(".moveLeft");
     for (var i = 0; i < moveLeftNodes.length; ++i) {
         moveLeftNodes[i].addEventListener("click", function(event)
-        {
-            moveLeft(this.parentNode);
-        }, false);
-    }
-    var temp = document.querySelectorAll(".moveLeft i, .moveRight i");
-    for (var i = 0; i < temp.length; ++i) {
-        temp[i].style.marginTop = temp[i].parentNode.offsetHeight/2 - 8;
+                                          {
+                                              moveLeft(this.parentNode);
+                                          }, false);
     }
 });

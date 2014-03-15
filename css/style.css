@@ -1,10 +1,14 @@
+body {
+    background-color: #e9e0d6;
+    font-family: "Arial";
+}
 #board {
     position: relative;
     width:100%;
     margin: 0 auto;
 }
 .column {
-    width: 18%;
+    width: 23%;
     display: inline-block;
     border: 1px solid red;
     margin: .5%;
@@ -13,15 +17,17 @@
     vertical-align: top;
 }
 .note {
-    background-color: #ddd;
-    border: 1px solid #999;
+    background-color: #4298b5;
     margin: 5px;
     display: inline-block;
     position: relative;
+    box-sizing: border-box;
 }
 .note > .title, .note > .content {
     display: block;
     padding: 2px;
+    color: #212121;
+
 }
 .note > .title {
     border-bottom: 1px solid #fff;
@@ -29,7 +35,7 @@
 .note > .moveLeft, .note > .moveRight {
     position: absolute;
     height: 100%;
-    background-color: #1fda9a;
+    background-color: #92b06a;
     padding: 0px 10px;
     line-height: 100px;
     z-index: 100;
@@ -37,13 +43,24 @@
     transition: .8 opacity;
     -webkit-transition: .5s opacity;
     -moz-transition: .5s opacity;
+    color: #ddd;
+    cursor: pointer;
+    width:15px
+
+        }
+.note i {
+    position: absolute;
+    top:50%;
+    height: 0;
+    line-height: 2px;
+    left: 10px;
 }
 .note > .moveLeft {
-    box-shadow: 5px 0px 10px #999;
+    box-shadow: 5px 0px 8px #333;
     left:0;
-}
+        }
 .note > .moveRight {
-    box-shadow: -5px 0px 10px #999;
+    box-shadow: -5px 0px 8px #222;
     right:0;
 }
 .note:hover > .moveRight,.note:hover > .moveLeft {

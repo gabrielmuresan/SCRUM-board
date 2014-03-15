@@ -32,5 +32,4 @@ var fadeIn = function(elem) {
             }
     var int = setInterval(frame, 10) // draw every 10ms
     }
-
 initFramework();
