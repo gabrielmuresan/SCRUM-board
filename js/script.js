@@ -1,10 +1,10 @@
 _onReady(function() {
     var moveRight = function(el) {
-        fadeOut(el.querySelector(".moveRight"));
-        fadeOut(el.querySelector(".moveLeft"));
         var nextCol = "";
         var classList = el.parentNode.className;
+        console.log(JSON.stringify(classList));
         var end = false;
+        console.log(el.className);
         if(classList.indexOf("column_todo")>=0)
             nextCol = ".column_inProgress";
         else if(classList.indexOf("column_inProgress")>=0)
@@ -17,8 +17,6 @@ _onReady(function() {
             document.querySelector(nextCol).appendChild(el);
     }
     var moveLeft = function(el) {
-        fadeOut(el.querySelector(".moveRight"));
-        fadeOut(el.querySelector(".moveLeft"));
         var nextCol = "";
         var classList = el.parentNode.className.split(' ');
         var end = false;
@@ -37,24 +35,14 @@ _onReady(function() {
     for (var i = 0; i < moveRightNodes.length; ++i) {
         moveRightNodes[i].addEventListener("click", function(event)
         {
-            var targ = getEventTarget(event);
-            while(targ.className.indexOf("note")<0)
-            {
-                targ = targ.parentNode;
-            }
-            moveRight(targ);
+            moveRight(this.parentNode);
         }, false);
     }
     var moveLeftNodes = document.querySelectorAll(".moveLeft");
     for (var i = 0; i < moveLeftNodes.length; ++i) {
         moveLeftNodes[i].addEventListener("click", function(event)
         {
-            var targ = getEventTarget(event);
-            while(targ.className.indexOf("note")<0)
-            {
-                targ = targ.parentNode;
-            }
-            moveLeft(targ);
+            moveLeft(this.parentNode);
         }, false);
     }
     var temp = document.querySelectorAll(".moveLeft i, .moveRight i");

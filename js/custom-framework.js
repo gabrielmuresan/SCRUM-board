@@ -8,15 +8,7 @@ var _onReady = function(callback) {
             }
         }
         }
-var getEventTarget = function(ev) {
-    var targ;
-    if (!e) var e = window.event;
-    if (e.target) targ = e.target;
-    else if (e.srcElement) targ = e.srcElement;
-    if (targ.nodeType == 3) // defeat Safari bug
-        targ = targ.parentNode;
-    return targ;
-}
+
 var initFramework = function() {
     _console.log("Initialising framework");
 }
