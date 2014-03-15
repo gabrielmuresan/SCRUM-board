@@ -39,6 +39,14 @@ _onReady(function() {
             fadeIn(el);
         }
     }
+//    var notes = document.querySelectorAll(".note > .content");
+//    for (var i = 0; i < notes.length; ++i) {
+//        notes[i].addEventListener("click", function(event)
+//                                           {
+//                                               this.style.height=0;
+//                                               this.style.overflow = "hidden";
+//                                           }, false);
+//    }
     var moveRightNodes = document.querySelectorAll(".moveRight");
     for (var i = 0; i < moveRightNodes.length; ++i) {
         moveRightNodes[i].addEventListener("click", function(event)

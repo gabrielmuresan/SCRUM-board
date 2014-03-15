@@ -17,22 +17,37 @@ body {
     vertical-align: top;
 }
 .note {
-    background-color: #4298b5;
+    background-color: #2c3e50;
     margin: 5px;
     display: inline-block;
     position: relative;
     box-sizing: border-box;
+    min-width: 100px;
+    color: #ecf0f1;
+    border-radius: 2px;
 }
 .note > .title, .note > .content {
     display: block;
     padding: 2px;
-    color: #212121;
+    height: auto;
 
 }
-.note > .title {
-    border-bottom: 1px solid #fff;
+.note > .content
+{
+    transform: scaleY(1);    
+    transform-origin: top;
+    padding: 10px 15px;
 }
-.note > .moveLeft, .note > .moveRight {
+.note > .title 
+{
+    /*    border-bottom: 1px solid #fff;*/
+    font-weight: bold;
+    padding: 10px 0 7px 15px;
+    background-color: rgba(0,0,0,.2);
+    box-shadow: 0px -10px 20px -15px #000 inset;
+}
+.note > .moveLeft, 
+.note > .moveRight {
     position: absolute;
     height: 100%;
     background-color: #92b06a;
@@ -46,7 +61,6 @@ body {
     color: #ddd;
     cursor: pointer;
     width:15px
-
         }
 .note i {
     position: absolute;
@@ -56,12 +70,16 @@ body {
     left: 10px;
 }
 .note > .moveLeft {
-    box-shadow: 5px 0px 8px #333;
+    box-shadow: 5px 0px 8px #222;
     left:0;
-        }
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
 .note > .moveRight {
     box-shadow: -5px 0px 8px #222;
     right:0;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
 }
 .note:hover > .moveRight,.note:hover > .moveLeft {
     opacity: 1;
