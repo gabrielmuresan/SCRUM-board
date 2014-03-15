@@ -1,9 +1,7 @@
 _onReady(function() {
-    
     var moveRight = function(el) {
         fadeOut(el.querySelector(".moveRight"));
         fadeOut(el.querySelector(".moveLeft"));
-        _console.log("moving right");
         var nextCol = "";
         var classList = el.parentNode.className;
         var end = false;
@@ -17,12 +15,10 @@ _onReady(function() {
             end = true;
         if(!end)
             document.querySelector(nextCol).appendChild(el);
-        
     }
     var moveLeft = function(el) {
         fadeOut(el.querySelector(".moveRight"));
         fadeOut(el.querySelector(".moveLeft"));
-        _console.log("moving left");
         var nextCol = "";
         var classList = el.parentNode.className.split(' ');
         var end = false;
@@ -37,53 +33,29 @@ _onReady(function() {
         if(!end)
             document.querySelector(nextCol).appendChild(el);
     }
-    var nodes = document.querySelectorAll(".note");
-    for (var i = 0; i < nodes.length; ++i) {
-        nodes[i].onmouseenter = function(e)
-        {
-            var targ = getEventTarget(e);
-            while(targ.className.indexOf("note")<0)
-            {
-                targ = targ.parentNode;
-            }
-            fadeIn(targ.querySelector(".moveRight"));
-            fadeIn(targ.querySelector(".moveLeft"));
-        }
-        nodes[i].onmouseleave = function(e)
-        {
-            var targ = getEventTarget(e);
-            while(targ.className.indexOf("note")<0)
-            {
-                targ = targ.parentNode;
-            }
-            
-            fadeOut(targ.querySelector(".moveRight"));
-            fadeOut(targ.querySelector(".moveLeft"));
-        }
-    }
     var moveRightNodes = document.querySelectorAll(".moveRight");
     for (var i = 0; i < moveRightNodes.length; ++i) {
-        moveRightNodes[i].onclick = function(e)
+        moveRightNodes[i].addEventListener("click", function(event)
         {
-            var targ = getEventTarget(e);
+            var targ = getEventTarget(event);
             while(targ.className.indexOf("note")<0)
             {
                 targ = targ.parentNode;
             }
             moveRight(targ);
-        }
+        }, false);
     }
     var moveLeftNodes = document.querySelectorAll(".moveLeft");
     for (var i = 0; i < moveLeftNodes.length; ++i) {
-        moveLeftNodes[i].onclick = function(e)
+        moveLeftNodes[i].addEventListener("click", function(event)
         {
-            var targ = getEventTarget(e);
+            var targ = getEventTarget(event);
             while(targ.className.indexOf("note")<0)
             {
                 targ = targ.parentNode;
             }
             moveLeft(targ);
-        }
+        }, false);
     }
     var temp = document.querySelectorAll(".moveLeft i, .moveRight i");
     for (var i = 0; i < temp.length; ++i) {

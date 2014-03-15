@@ -34,6 +34,9 @@
     line-height: 100px;
     z-index: 100;
     opacity: 0;
+    transition: .8 opacity;
+    -webkit-transition: .5s opacity;
+    -moz-transition: .5s opacity;
 }
 .note > .moveLeft {
     box-shadow: 5px 0px 10px #999;
@@ -42,4 +45,7 @@
 .note > .moveRight {
     box-shadow: -5px 0px 10px #999;
     right:0;
+}
+.note:hover > .moveRight,.note:hover > .moveLeft {
+    opacity: 1;
 }
