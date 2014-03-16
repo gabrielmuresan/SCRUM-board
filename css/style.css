@@ -7,6 +7,12 @@ body {
     width:100%;
     margin: 0 auto;
     min-width: 850px;
+    -webkit-transition: .5s width, .5s padding;
+    -moz-transition: .5s width, .5s padding;
+}
+#board.withAdminBar {
+    padding-left: 260px;
+    width:80%;
 }
 .column {
     width: 23%;

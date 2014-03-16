@@ -120,8 +120,22 @@ _onReady(function() {
                                           }, false);
     }
     function handleHandleBarClick(e) {
-        this.parentNode.classList.remove("closed");
-        this.parentNode.classList.add("opened");
+        if(this.parentNode.classList.contains("closed"))
+        {
+            document.querySelector("#board").classList.add("withAdminBar");
+            this.parentNode.classList.remove("closed");
+            this.parentNode.classList.add("opened");
+            this.querySelector("i").classList.remove("fa-angle-double-right");
+            this.querySelector("i").classList.add("fa-angle-double-left");
+        }
+        else
+        {
+            document.querySelector("#board").classList.remove("withAdminBar");
+            this.parentNode.classList.remove("opened");
+            this.parentNode.classList.add("closed");
+            this.querySelector("i").classList.remove("fa-angle-double-left");
+            this.querySelector("i").classList.add("fa-angle-double-right");
+        }
     }
     var handleBar = document.querySelector("#sidebar .handleBar");
     handleBar.addEventListener("click", handleHandleBarClick, false);
