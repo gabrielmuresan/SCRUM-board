@@ -70,7 +70,10 @@ _onReady(function() {
         var el = Note(title, description);
         document.querySelector(".column_todo").appendChild(el);
 
-
+        file = input.files[0];
+        fr = new FileReader();
+        fr.onload = receivedText;
+        fr.readAsText(file);
         //location.href(el.id);
     }
     var initAdminOptions = function() {
