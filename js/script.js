@@ -14,7 +14,44 @@ var setAdminOption = function(adminOption, value)
             break;
     }
 }
+
+var Note = function(title, description)
+{
+    var _self = this;
+    this.title = title;
+    this.description = description;
+    this.toElement = function()
+    {
+        var el = document.createElement("span");
+        el.classList.add("note");
+        el.setAttribute("draggable","true");
+        var nextId = document.querySelectorAll(".note").length+1;
+        el.id="note"+nextId;
+        el.innerHTML = '<span class="moveLeft"><i class="fa fa-arrow-left"></i></span><span class="moveRight"><i class="fa fa-arrow-right"></i></span>';
+        
+        var title = document.createElement("span");
+        title.classList.add("title");
+        title.innerHTML = _self.title;
+        var content = document.createElement("span");
+        content.classList.add("content");
+        content.innerHTML = _self.description;
+        
+        el.appendChild(title);
+        el.appendChild(content);
+        console.log(el.innerHTML);
+        return el;
+    }
+    return this.toElement();
+}
+
+var insertNote = function(){};
 _onReady(function() {
+    insertNote = function(title,description)
+    {
+        var el = Note(title, description);
+        document.querySelector(".column_todo").appendChild(el);
+        location.href(el.id);
+    }
     var initAdminOptions = function() {
 
         switch(document.getElementById("adminOptions").querySelector(".shrinkBoard > input:checked").value)

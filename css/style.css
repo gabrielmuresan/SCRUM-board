@@ -6,13 +6,19 @@ form fieldset {
     border: none;
     padding: 5px;
     margin: 0;
-    
+}
+form label {
+    display: block;
+}
+#sidebar textarea {
+    max-width: 234px;
+    max-height: 115px;
 }
 #board {
     position: relative;
     width:100%;
     margin: 0 auto;
-    min-width: 850px;
+    min-width: 870px;
     -webkit-transition: .5s width, .5s padding;
     -moz-transition: .5s width, .5s padding;
 }
@@ -125,7 +131,7 @@ form fieldset {
     top:10px;
     height: 90%;
     min-height: 400px;
-    background-color:#bdc3c7;
+    background-color:#16a085;
     z-index: 999;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,.7);
     border-bottom-right-radius: 10px;
@@ -133,23 +139,34 @@ form fieldset {
     transition: .5s left ease-out;
     -webkit-transition: .5s left ease-out;
 }
+#sidebar > .title {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color:#eee;
+    text-shadow: 2px 2px 0px #000;
+}
+#sidebar > .content {
+    color:#eee;
+    text-shadow: 1px 1px 2px #000;
+}
 #sidebar.closed 
 {
-    left:-250px;
+    left:-245px;
 }
 #sidebar.opened 
 {
-    left:0
+    left:-2px;
 }
 #sidebar .handleBar {
-    
+
     position:absolute;
     right:-29px;
     top:-2px;
     width:20px;
     font-size: 30px;
     padding-left:7px;
-    background-color:#bdc3c7;
+    background-color:#16a085;
     color: #fff;
     text-shadow: 0px 0px 10px #000;
     border-top-right-radius: 5px;
@@ -158,5 +175,5 @@ form fieldset {
     border: 2px solid #ecf0f1;
     border-left: none;
     cursor: pointer;
-/*    box-shadow: 0px 0px 10px 0px rgba(0,0,0,.7);*/
+    /*    box-shadow: 0px 0px 10px 0px rgba(0,0,0,.7);*/
 }
