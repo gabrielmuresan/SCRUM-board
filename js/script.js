@@ -15,42 +15,63 @@ var setAdminOption = function(adminOption, value)
     }
 }
 
-var Note = function(title, description)
-{
-    var _self = this;
-    this.title = title;
-    this.description = description;
-    this.toElement = function()
-    {
-        var el = document.createElement("span");
-        el.classList.add("note");
-        el.setAttribute("draggable","true");
-        var nextId = document.querySelectorAll(".note").length+1;
-        el.id="note"+nextId;
-        el.innerHTML = '<span class="moveLeft"><i class="fa fa-arrow-left"></i></span><span class="moveRight"><i class="fa fa-arrow-right"></i></span>';
-        
-        var title = document.createElement("span");
-        title.classList.add("title");
-        title.innerHTML = _self.title;
-        var content = document.createElement("span");
-        content.classList.add("content");
-        content.innerHTML = _self.description;
-        
-        el.appendChild(title);
-        el.appendChild(content);
-        console.log(el.innerHTML);
-        return el;
-    }
-    return this.toElement();
-}
 
 var insertNote = function(){};
 _onReady(function() {
+    var Note = function(title, description)
+    {
+        var _self = this;
+        this.title = title;
+        this.description = description;
+        this.toElement = function()
+        {
+            var el = document.createElement("span");
+            el.classList.add("note");
+            el.setAttribute("draggable","true");
+            var nextId = document.querySelectorAll(".note").length+1;
+            el.id="note"+nextId;
+
+            var moveLeft = document.createElement("span");
+            moveLeft.classList.add("moveLeft");
+            moveLeft.innerHTML = '<i class="fa fa-arrow-left"></i>';
+            el.appendChild(moveLeft);
+            moveLeft.addEventListener('click', function(e) {
+                handleMoveLeft(moveLeft.parentNode)
+            }, false);
+
+            var moveRight = document.createElement("span");
+            moveRight.classList.add("moveRight");
+            moveRight.innerHTML = '<i class="fa fa-arrow-right"></i>';
+            el.appendChild(moveRight);
+            moveRight.addEventListener('click',function(e) {
+                handleMoveRight(moveRight.parentNode)
+            }, false);
+
+            var title = document.createElement("span");
+            title.classList.add("title");
+            title.innerHTML = _self.title;
+            var content = document.createElement("span");
+            content.classList.add("content");
+            content.innerHTML = _self.description;
+
+            el.appendChild(title);
+            el.appendChild(content);
+            console.log(el.innerHTML);
+
+            el.addEventListener('dragstart', handleDragStart, false);
+            el.addEventListener('dragend', handleDragEnd, false);
+            return el;
+        }
+        return this.toElement();
+    }
+
     insertNote = function(title,description)
     {
         var el = Note(title, description);
         document.querySelector(".column_todo").appendChild(el);
-        location.href(el.id);
+
+
+        //location.href(el.id);
     }
     var initAdminOptions = function() {
 
@@ -65,9 +86,13 @@ _onReady(function() {
         }
 
     }
-    var moveRight = function(el) {
+    var handleMoveRight = function(el) {
         var nextCol = "";
-        var classList = el.parentNode.className;
+        var classList = [];
+        if(!el.parentNode)
+            classList = document.querySelector(".column_todo").className;
+        else
+            classList = el.parentNode.className;
         var end = false;
         if(classList.indexOf("column_todo")>=0)
             nextCol = ".column_inProgress";
@@ -81,13 +106,17 @@ _onReady(function() {
         {
             el.style.opacity = 0;
             document.querySelector(nextCol).appendChild(el);
-            if(el.id)location.href="#" + el.id;
+            if(el.id)
+                location.href = "#" + el.id;
             fadeIn(el);
         }
     }
-    var moveLeft = function(el) {
+    var handleMoveLeft = function(el) {
         var nextCol = "";
-        var classList = el.parentNode.className.split(' ');
+        if(!el.parentNode)
+            classList = document.querySelector(".column_todo").className;
+        else
+            classList = el.parentNode.className;
         var end = false;
         if(classList.indexOf("column_todo")>=0)
             end = true;
@@ -114,18 +143,6 @@ _onReady(function() {
         e.dataTransfer.effectAllowed = 'move';
         e.dataTransfer.setData(Element, this);
     }
-    function handleDrop(e) {
-        // this / e.target is current target element.
-
-        if (e.stopPropagation) {
-            e.stopPropagation(); // stops the browser from redirecting.
-        }
-
-        // See the section on the DataTransfer object.
-
-        return false;
-    }
-
     function handleDragEnd(e) {
         // this/e.target is the source node.
         fadeIn(this);
@@ -175,14 +192,14 @@ _onReady(function() {
     for (var i = 0; i < moveRightNodes.length; ++i) {
         moveRightNodes[i].addEventListener("click", function(event)
                                            {
-                                               moveRight(this.parentNode);
+                                               handleMoveRight(this.parentNode);
                                            }, false);
     }
     var moveLeftNodes = document.querySelectorAll(".moveLeft");
     for (var i = 0; i < moveLeftNodes.length; ++i) {
         moveLeftNodes[i].addEventListener("click", function(event)
                                           {
-                                              moveLeft(this.parentNode);
+                                              handleMoveLeft(this.parentNode);
                                           }, false);
     }
     function handleHandleBarClick(e) {
