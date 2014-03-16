@@ -9,8 +9,12 @@
         <script type="text/javascript" src="js/script.js"></script>
     </head>
     <body>
+        <div id="sidebar" class="closed">
+            <span class="handleBar"><i class="fa fa-angle-double-right"></i></span>
+        </div>
         <div id="board">
             <div class="column column_todo" dropable="true">
+                <div class="title">TO DO</div>
                 <span class="note" id="note1" draggable="true">
                     <span class="moveLeft"><i class="fa fa-arrow-left"></i></span>
                     <span class="moveRight"><i class="fa fa-arrow-right"></i></span>
@@ -57,13 +61,13 @@
                 </span>
             </div>
             <div class="column column_inProgress" dropable="true">
-
+                <div class="title">IN PROGRESS</div>
             </div>
             <div class="column column_toVerify" dropable="true">
-
+                <div class="title">TO VERIFY</div>
             </div>
             <div class="column column_done" dropable="true">
-
+                <div class="title">DONE</div>
             </div>
         </div>
     </body>

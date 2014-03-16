@@ -1,19 +1,21 @@
 body {
-    background-color: #e9e0d6;
+    background-color: #ecf0f1;
     font-family: "Arial";
 }
 #board {
     position: relative;
     width:100%;
     margin: 0 auto;
+    min-width: 850px;
 }
 .column {
     width: 23%;
     display: inline-block;
-    border: 1px solid red;
-    margin: .5%;
+    border: 2px solid #7f8c8d;
+    margin: 5px;
     height: auto;
-    min-height: 200px;
+    min-height: 97%;
+    min-width: 190px;
     vertical-align: top;
 }
 .note {
@@ -96,4 +98,54 @@ body {
 }
 .over {
     border: 2px dashed #000
+        }
+.column > .title {
+    height:40px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 40px;
+    font-size: 25px;
+    color: #2980b9;
+}
+#sidebar {
+    min-width:250px;
+    width: 250px;
+    position:absolute;
+    top:10px;
+    height: 90%;
+    min-height: 400px;
+    background-color:#bdc3c7;
+    z-index: 999;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,.7);
+    border-bottom-right-radius: 10px;
+    border: 2px solid #ecf0f1;
+    transition: .5s left ease-out;
+    -webkit-transition: .5s left ease-out;
+}
+#sidebar.closed 
+{
+    left:-250px;
+}
+#sidebar.opened 
+{
+    left:0
+}
+#sidebar .handleBar {
+    
+    position:absolute;
+    right:-29px;
+    top:-2px;
+    width:20px;
+    font-size: 30px;
+    padding-left:7px;
+    background-color:#bdc3c7;
+    color: #fff;
+    text-shadow: 0px 0px 10px #000;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    z-index: 1;
+    border: 2px solid #ecf0f1;
+    border-left: none;
+    cursor: pointer;
+/*    box-shadow: 0px 0px 10px 0px rgba(0,0,0,.7);*/
 }

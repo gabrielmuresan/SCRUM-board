@@ -68,6 +68,7 @@ _onReady(function() {
         });
     }
     function handleDragOver(e) {
+        this.classList.add('over');
         if (e.preventDefault) {
             e.preventDefault(); // Necessary. Allows us to drop.
         }
@@ -118,4 +119,11 @@ _onReady(function() {
                                               moveLeft(this.parentNode);
                                           }, false);
     }
+    function handleHandleBarClick(e) {
+        this.parentNode.classList.remove("closed");
+        this.parentNode.classList.add("opened");
+    }
+    var handleBar = document.querySelector("#sidebar .handleBar");
+    handleBar.addEventListener("click", handleHandleBarClick, false);
+
 });
