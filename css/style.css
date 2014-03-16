@@ -2,6 +2,12 @@ body {
     background-color: #ecf0f1;
     font-family: "Arial";
 }
+form fieldset {
+    border: none;
+    padding: 5px;
+    margin: 0;
+    
+}
 #board {
     position: relative;
     width:100%;
@@ -11,7 +17,7 @@ body {
     -moz-transition: .5s width, .5s padding;
 }
 #board.withAdminBar {
-    padding-left: 260px;
+    padding-left: 230px;
     width:80%;
 }
 .column {
@@ -20,7 +26,6 @@ body {
     border: 2px solid #7f8c8d;
     margin: 5px;
     height: auto;
-    min-height: 97%;
     min-width: 190px;
     vertical-align: top;
 }

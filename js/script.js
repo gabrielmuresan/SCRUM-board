@@ -1,4 +1,33 @@
+//declaration is before dom is ready
+var adminOptions = new Object();
+adminOptions.shrinkBoard = false;
+var setAdminOption = function(adminOption, value)
+{
+    switch (adminOption)
+    {
+        case "shrinkBoard":
+            adminOptions.shrinkBoard = value;
+            if(value)
+                document.querySelector("#board").classList.add("withAdminBar");
+            else
+                document.querySelector("#board").classList.remove("withAdminBar");
+            break;
+    }
+}
 _onReady(function() {
+    var initAdminOptions = function() {
+
+        switch(document.getElementById("adminOptions").querySelector(".shrinkBoard > input:checked").value)
+        {
+            case "true":
+                adminOptions.shrinkBoard = true;
+                break;
+            default:
+                adminOptions.shrinkBoard = false;
+                break;
+        }
+
+    }
     var moveRight = function(el) {
         var nextCol = "";
         var classList = el.parentNode.className;
@@ -122,7 +151,9 @@ _onReady(function() {
     function handleHandleBarClick(e) {
         if(this.parentNode.classList.contains("closed"))
         {
-            document.querySelector("#board").classList.add("withAdminBar");
+            console.log(adminOptions.shrinkBoard);
+            if(adminOptions.shrinkBoard)
+                document.querySelector("#board").classList.add("withAdminBar");
             this.parentNode.classList.remove("closed");
             this.parentNode.classList.add("opened");
             this.querySelector("i").classList.remove("fa-angle-double-right");
@@ -130,7 +161,9 @@ _onReady(function() {
         }
         else
         {
-            document.querySelector("#board").classList.remove("withAdminBar");
+            console.log(adminOptions.shrinkBoard);
+            if(adminOptions.shrinkBoard)
+                document.querySelector("#board").classList.remove("withAdminBar");
             this.parentNode.classList.remove("opened");
             this.parentNode.classList.add("closed");
             this.querySelector("i").classList.remove("fa-angle-double-left");
@@ -139,5 +172,6 @@ _onReady(function() {
     }
     var handleBar = document.querySelector("#sidebar .handleBar");
     handleBar.addEventListener("click", handleHandleBarClick, false);
-
+    initAdminOptions();
 });
+

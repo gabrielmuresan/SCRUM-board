@@ -11,6 +11,20 @@
     <body>
         <div id="sidebar" class="closed">
             <span class="handleBar"><i class="fa fa-angle-double-right"></i></span>
+            <div class="title">
+                Admin Panel
+            </div>
+            <div class="content">
+                <form id="adminOptions">
+                    <fieldset>
+                        <label for="shrinkBoard">Shrink board with Admin Panel</label>
+                        <fieldset class="shrinkBoard">
+                            <input type="radio" value="true" name="shrinkBoard" onclick="setAdminOption('shrinkBoard',true);" />Yes
+                            <input type="radio" value="false" name="shrinkBoard" onclick="setAdminOption('shrinkBoard',false);" checked="checked" /> No
+                        </fieldset>
+                    </fieldset>
+                </form>
+            </div>
         </div>
         <div id="board">
             <div class="column column_todo" dropable="true">
