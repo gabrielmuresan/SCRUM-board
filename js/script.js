@@ -1,5 +1,5 @@
 //declaration is before dom is ready
-var adminOptions = new Object();
+var adminOptions = {};
 adminOptions.shrinkBoard = false;
 var setAdminOption = function(adminOption, value)
 {
@@ -13,9 +13,7 @@ var setAdminOption = function(adminOption, value)
                 document.querySelector("#board").classList.remove("withAdminBar");
             break;
     }
-}
-
-
+};
 var insertNote = function(){};
 _onReady(function() {
     var Note = function(title, description)
@@ -36,7 +34,7 @@ _onReady(function() {
             moveLeft.innerHTML = '<i class="fa fa-arrow-left"></i>';
             el.appendChild(moveLeft);
             moveLeft.addEventListener('click', function(e) {
-                handleMoveLeft(moveLeft.parentNode)
+                handleMoveLeft(moveLeft.parentNode);
             }, false);
 
             var moveRight = document.createElement("span");
@@ -44,7 +42,7 @@ _onReady(function() {
             moveRight.innerHTML = '<i class="fa fa-arrow-right"></i>';
             el.appendChild(moveRight);
             moveRight.addEventListener('click',function(e) {
-                handleMoveRight(moveRight.parentNode)
+                handleMoveRight(moveRight.parentNode);
             }, false);
 
             var title = document.createElement("span");
@@ -55,27 +53,29 @@ _onReady(function() {
             content.innerHTML = _self.description;
 
             el.appendChild(title);
-            el.appendChild(content);
+            if(_self.description)
+                el.appendChild(content);
             console.log(el.innerHTML);
 
             el.addEventListener('dragstart', handleDragStart, false);
             el.addEventListener('dragend', handleDragEnd, false);
             return el;
-        }
-        return this.toElement();
-    }
+        };
+        return this;
+    };
 
     insertNote = function(title,description)
     {
         var el = Note(title, description);
-        document.querySelector(".column_todo").appendChild(el);
-
-        file = input.files[0];
-        fr = new FileReader();
-        fr.onload = receivedText;
-        fr.readAsText(file);
-        //location.href(el.id);
-    }
+        document.querySelector(".column_todo").appendChild(el.toElement());
+        var urlBuilder = 'php/execute.php?action=insert&title=' + title + '&column=1';
+        if(description && description.length > 0)
+            urlBuilder = urlBuilder + '&description=' + description;
+        var xhReq = new XMLHttpRequest();
+        xhReq.open("GET", urlBuilder, false);
+        xhReq.send(null);
+        var serverResponse = xhReq.responseText;
+    };
     var initAdminOptions = function() {
 
         switch(document.getElementById("adminOptions").querySelector(".shrinkBoard > input:checked").value)
@@ -88,7 +88,7 @@ _onReady(function() {
                 break;
         }
 
-    }
+    };
     var handleMoveRight = function(el) {
         var nextCol = "";
         var classList = [];
@@ -113,7 +113,7 @@ _onReady(function() {
                 location.href = "#" + el.id;
             fadeIn(el);
         }
-    }
+    };
     var handleMoveLeft = function(el) {
         var nextCol = "";
         if(!el.parentNode)
@@ -136,7 +136,7 @@ _onReady(function() {
             if(el.id)location.href="#" + el.id;
             fadeIn(el);
         }
-    }
+    };
     var dragSrcEl = null;
     function handleDragStart(e) {
         this.style.opacity = '0.4';  // this / e.target is the source node.

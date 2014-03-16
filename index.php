@@ -1,3 +1,4 @@
+<?php require_once('/php/functions.php') ?>
 <!-- TODO -->
 <html>
     <head>
@@ -42,59 +43,19 @@
         <div id="board">
             <div class="column column_todo" dropable="true">
                 <div class="title">TO DO</div>
-                <span class="note" id="note1" draggable="true">
-                    <span class="moveLeft"><i class="fa fa-arrow-left"></i></span>
-                    <span class="moveRight"><i class="fa fa-arrow-right"></i></span>
-                    <span class="title">
-                        title
-                    </span>
-                    <span class="content">
-                        lore ipsum aleto magetolore ipsum aletolore ipsum aleto magetolore ipsum aletolore ipsum aleto magetolore ipsum aletolore ipsum aleto magetolore ipsum aletolore ipsum aleto magetolore ipsum aletolore ipsum aleto magetolore ipsum aleto
-                    </span>
-                </span>
-                <span class="note" id="note2" draggable="true">
-                    <span class="moveLeft"><i class="fa fa-arrow-left"></i></span>
-                    <span class="moveRight"><i class="fa fa-arrow-right"></i></span>
-                    <span class="title">
-                        title
-                    </span>
-                </span>
-                <span class="note" id="note3" draggable="true">
-                    <span class="moveLeft"><i class="fa fa-arrow-left"></i></span>
-                    <span class="moveRight"><i class="fa fa-arrow-right"></i></span>
-                    <span class="title">
-                        title
-                    </span>
-                </span>
-                <span class="note" id="note4" draggable="true">
-                    <span class="moveLeft"><i class="fa fa-arrow-left"></i></span>
-                    <span class="moveRight"><i class="fa fa-arrow-right"></i></span>
-                    <span class="title">
-                        title
-                    </span>
-                    <span class="content">
-                        lore ipsum aleto magetolore ipsum aletolore ipsum aleto magetolore ipsum aletolore ipsum aleto magetolore ipsum aletolore ipsum aleto magetolore ipsum aletolore ipsum aleto magetolore ipsum aletolore ipsum aleto magetolore ipsum aleto
-                    </span>
-                </span>
-                <span class="note" id="note5" draggable="true">
-                    <span class="moveLeft"><i class="fa fa-arrow-left"></i></span>
-                    <span class="moveRight"><i class="fa fa-arrow-right"></i></span>
-                    <span class="title">
-                        title
-                    </span>
-                    <span class="content">
-                        lore ipsum aleto magetolore ipsum aletolore ipsum aleto magetolore ipsum aletolore ipsum aleto magetolore ipsum aletolore ipsum aleto magetolore ipsum aletolore ipsum aleto magetolore ipsum aletolore ipsum aleto magetolore ipsum aleto
-                    </span>
-                </span>
+                <?php DisplayNotesForColumn(1); ?>
             </div>
             <div class="column column_inProgress" dropable="true">
                 <div class="title">IN PROGRESS</div>
+                <?php DisplayNotesForColumn(2); ?>
             </div>
             <div class="column column_toVerify" dropable="true">
                 <div class="title">TO VERIFY</div>
+                <?php DisplayNotesForColumn(3); ?>
             </div>
             <div class="column column_done" dropable="true">
                 <div class="title">DONE</div>
+                <?php DisplayNotesForColumn(4); ?>
             </div>
         </div>
     </body>
