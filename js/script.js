@@ -63,10 +63,14 @@ _onReady(function() {
         };
         return this;
     };
+    Note.prototype.testing = function() {
+        alert("working");
+    };
 
     insertNote = function(title,description)
     {
         var el = Note(title, description);
+        el.testing();
         document.querySelector(".column_todo").appendChild(el.toElement());
         var urlBuilder = 'php/execute.php?action=insert&title=' + title + '&column=1';
         if(description && description.length > 0)
