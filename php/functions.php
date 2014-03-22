@@ -1,16 +1,18 @@
 <?php
-require_once('/Models/Note.php');
-require_once('/Config/config.php');
+require_once('Models/Note.php');
+require_once('Config/config.php');
+
 
 function get_connection() 
 {
     //$con = mysqli_connect("gladiolus.arvixe.com", "scrum_board_root","Password@1","scrum_board_db");
     try {
         $config = getConfig();
-        $host = $config->hostname;
-        $dbname = $config->dbname;
-        $user = $config->user;
-        $pass = $config->pass;
+	
+        $host = $config['hostname'];
+        $dbname = $config['dbname'];
+        $user = $config['user'];
+        $pass = $config['pass'];
 
         # MS SQL Server and Sybase with PDO_DBLIB
         # $DBH = new PDO("mssql:host=$host;dbname=$dbname, $user, $pass");

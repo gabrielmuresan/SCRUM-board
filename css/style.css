@@ -44,6 +44,7 @@ form label {
     min-width: 100px;
     color: #ecf0f1;
     border-radius: 2px;
+	min-width: 40%;
 }
 .note > .title, .note > .content {
     display: block;
@@ -61,7 +62,7 @@ form label {
 {
     /*    border-bottom: 1px solid #fff;*/
     font-weight: bold;
-    padding: 10px 0 7px 15px;
+    padding: 10px 15px 7px 15px;
     background-color: rgba(0,0,0,.2);
     box-shadow: 0px -10px 20px -15px #000 inset;
 }

@@ -1,9 +1,10 @@
 <?php
+header('Access-Control-Allow-Origin: localhost');
 require_once('/Models/Note.php');
 require_once('./functions.php');
 
 
-$action = $_GET["action"];
+$action = $_POST["action"];
 echo $action;
 switch ($action) {
     case 'insert':
@@ -12,9 +13,9 @@ switch ($action) {
 }
 function handleNoteInsert()
 {
-    $title = $_GET["title"];
-    $description = $_GET["description"];
-    $column = $_GET["column"];
+    $title = $_POST["title"];
+    $description = $_POST["description"];
+    $column = $_POST["column"];
     $args = array(
         'Title' => $title,
         'Description' => $description,

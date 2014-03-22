@@ -18,12 +18,13 @@ var insertNote = function(){};
 _onReady(function() {
     var Note = function(title, description)
     {
-        var _self = this;
         this.title = title;
         this.description = description;
-        this.toElement = function()
-        {
-            var el = document.createElement("span");
+        return this;
+    };
+    Note.prototype.toElement = function() {
+		var _self = this;
+        var el = document.createElement("span");
             el.classList.add("note");
             el.setAttribute("draggable","true");
             var nextId = document.querySelectorAll(".note").length+1;
@@ -60,24 +61,19 @@ _onReady(function() {
             el.addEventListener('dragstart', handleDragStart, false);
             el.addEventListener('dragend', handleDragEnd, false);
             return el;
-        };
-        return this;
-    };
-    Note.prototype.testing = function() {
-        alert("working");
     };
 
     insertNote = function(title,description)
     {
-        var el = Note(title, description);
-        el.testing();
+        var el = new Note(title, description);
         document.querySelector(".column_todo").appendChild(el.toElement());
-        var urlBuilder = 'php/execute.php?action=insert&title=' + title + '&column=1';
+        var urlBuilder = 'action=insert&title=' + title + '&column=1';
         if(description && description.length > 0)
             urlBuilder = urlBuilder + '&description=' + description;
         var xhReq = new XMLHttpRequest();
-        xhReq.open("GET", urlBuilder, false);
-        xhReq.send(null);
+        xhReq.open("POST", 'php/execute.php', false);
+		xhReq.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xhReq.send(urlBuilder);
         var serverResponse = xhReq.responseText;
     };
     var initAdminOptions = function() {
